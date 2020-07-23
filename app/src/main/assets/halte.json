@@ -1,0 +1,264 @@
+{
+  "haltes": [
+    {
+      "name": "Halte its",
+      "lat": -7.279507,
+      "lng": 112.789969
+    },
+    {
+      "name": "Halte klampis",
+      "lat": -7.280698,
+      "lng": 112.775415
+    },
+    {
+      "name": "Halte gramedia",
+      "lat": -7.280097,
+      "lng": 112.767059
+    },
+    {
+      "name": "Halte kertajaya 2",
+      "lat": -7.279052,
+      "lng": 112.759613
+    },
+    {
+      "name": "Halte lapangan hockey",
+      "lat": -7.270414,
+      "lng": 112.756348
+    },
+    {
+      "name": "Halte sman 4",
+      "lat": -7.265453,
+      "lng": 112.755515
+    },
+    {
+      "name": "Halte pemuda",
+      "lat": -7.265256,
+      "lng": 112.747699
+    },
+    {
+      "name": "Halte pangsud",
+      "lat": -7.266279,
+      "lng": 112.745041
+    },
+    {
+      "name": "Halte sono kembang",
+      "lat": -7.269613,
+      "lng": 112.743821
+    },
+    {
+      "name": "Halte urip sumoharjo",
+      "lat": -7.274893,
+      "lng": 112.741878
+    },
+    {
+      "name": "Halte santa maria",
+      "lat": -7.283561,
+      "lng": 112.740265
+    },
+    {
+      "name": "Halte bengawan 2",
+      "lat": -7.289811,
+      "lng": 112.738043
+    },
+    {
+      "name": "Halte kutai 2",
+      "lat": -7.291242,
+      "lng": 112.734619
+    },
+    {
+      "name": "Halte KPU",
+      "lat": -7.292620,
+      "lng": 112.728892
+    },
+    {
+      "name": "Halte darmo park 2",
+      "lat": -7.291675,
+      "lng": 112.717553
+    },
+    {
+      "name": "Halte taman makam pahlawan 2",
+      "lat": -7.288826,
+      "lng": 112.708408
+    },
+    {
+      "name": "Halte putat gede 2",
+      "lat": -7.286028,
+      "lng": 112.698868
+    },
+    {
+      "name": "Halte pradah kali kendal",
+      "lat": -7.284370,
+      "lng": 112.692115
+    },
+    {
+      "name": "Halte patung kuda 2",
+      "lat": -7.282968,
+      "lng": 112.686007
+    },
+    {
+      "name": "Halte jono sewojo 2",
+      "lat": -7.283969,
+      "lng": 112.682227
+    },
+    {
+      "name": "Halte graha family",
+      "lat": -7.292628,
+      "lng": 112.676036
+    },
+    {
+      "name": "Halte unesa",
+      "lat": -7.298360,
+      "lng": 112.675322
+    },
+    {
+      "name": "Halte ptc",
+      "lat": -7.288355,
+      "lng": 112.677288
+    },
+    {
+      "name": "Halte jono sewojo 1",
+      "lat": -7.284526,
+      "lng": 112.681368
+    },
+    {
+      "name": "Halte patung kuda 1",
+      "lat": -7.281929,
+      "lng": 112.685362
+    },
+    {
+      "name": "Halte darmo permai",
+      "lat": -7.284236,
+      "lng": 112.692409
+    },
+    {
+      "name": "Halte putat gede 1",
+      "lat": -7.285781,
+      "lng": 112.698702
+    },
+    {
+      "name": "Halte taman makam pahlawan 1",
+      "lat": -7.288569,
+      "lng": 112.708327
+    },
+    {
+      "name": "Halte park and ride mayjend sungkono",
+      "lat": -7.290889,
+      "lng": 112.715323
+    },
+    {
+      "name": "Halte darmo park 1",
+      "lat": -7.291477,
+      "lng": 112.717534
+    },
+    {
+      "name": "Halte gedung juang",
+      "lat": -7.291761,
+      "lng": 112.720928
+    },
+    {
+      "name": "Halte adityawarman",
+      "lat": -7.292494,
+      "lng": 112.729117
+    },
+    {
+      "name": "Halte kutai 1",
+      "lat": -7.291173,
+      "lng": 112.734521
+    },
+    {
+      "name": "Halte bengawan 1",
+      "lat": -7.289748,
+      "lng": 112.738044
+    },
+    {
+      "name": "Halte RS Darmo",
+      "lat": -7.287028,
+      "lng": 112.739392
+    },
+    {
+      "name": "Halte darmo niaga",
+      "lat": -7.280196,
+      "lng": 112.740630
+    },
+    {
+      "name": "Halte darmo kf",
+      "lat": -7.277826,
+      "lng": 112.741102
+    },
+    {
+      "name": "Halte basra",
+      "lat": -7.271763,
+      "lng": 112.741603
+    },
+    {
+      "name": "Halte basra tp",
+      "lat": -7.264821,
+      "lng": 112.740968
+    },
+    {
+      "name": "Halte embong malang",
+      "lat": -7.260341,
+      "lng": 112.737217
+    },
+    {
+      "name": "Halte siola",
+      "lat": -7.257236,
+      "lng": 112.737758
+    },
+    {
+      "name": "Halte tunjungan",
+      "lat": -7.259890,
+      "lng": 112.739238
+    },
+    {
+      "name": "Halte simpang pemuda",
+      "lat": -7.262986,
+      "lng": 112.741801
+    },
+    {
+      "name": "Halte gubernur suryo",
+      "lat": -7.263784,
+      "lng": 112.743975
+    },
+    {
+      "name": "Halte balai kota",
+      "lat": -7.260989,
+      "lng": 112.747840
+    },
+    {
+      "name": "Halte moestopo",
+      "lat": -7.264444,
+      "lng": 112.754100
+    },
+    {
+      "name": "Halte rsud dr soetomo",
+      "lat": -7.269274,
+      "lng": 112.756545
+    },
+    {
+      "name": "Halte unair",
+      "lat": -7.273680,
+      "lng": 112.756391
+    },
+    {
+      "name": "Halte kertajaya",
+      "lat": -7.278730,
+      "lng": 112.759442
+    },
+    {
+      "name": "Halte samsat manyar",
+      "lat": -7.279470,
+      "lng": 112.763902
+    },
+    {
+      "name": "Halte koni",
+      "lat": -7.280393,
+      "lng": 112.776927
+    },
+    {
+      "name": "Halte kertajaya indah",
+      "lat": -7.280308,
+      "lng": 112.782018
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">ETA Bus</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="login">Masuk</string>
+    <string name="dont_have_account">Belum punya akun?</string>
+    <string name="register">Daftar</string>
+    <string name="email">Email</string>
+    <string name="phone_num">No Telepon</string>
+    <string name="name">Nama</string>
+    <string name="home">Beranda</string>
+    <string name="map">Peta</string>
+    <string name="account">Akun</string>
+    <string name="eta">Perkiraan Waktu Tiba</string>
+    <string name="speed">Kecepatan</string>
+    <string name="position">Posisi</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="profile">Profil</string>
+    <string name="security">Keamanan</string>
+    <string name="logout">Keluar</string>
+    <string name="delete_acc">Hapus akun</string>
+    <string name="delete">Hapus</string>
+    <string name="bus_status">Status Bus</string>
+    <string name="save">Simpan</string>
+    <string name="popup_logout">Yakin ingin keluar dari akun?</string>
+    <string name="popup_delete">Yakin ingin menghapus akun? Aksi ini tidak dapat dibatalkan</string>
+    <string name="cancel">Batal</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="to_etabus">di ETA Bus</string>
+
+    <string name="map_token">pk.eyJ1IjoiZXRhYnVzNzMiLCJhIjoiY2tidXZzeTUyMDA0ZTJ6bnhpcW1najNnMCJ9.x7gSc4MjqDOXsLXhuV4J8g</string>
+    <string name="start_drive">Mulai mengemudi</string>
+    <string name="con_password">Konfirmasi password</string>
+</resources>

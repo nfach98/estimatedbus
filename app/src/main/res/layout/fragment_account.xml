@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".app.main.AccountFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@drawable/img_morning"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bgInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="12dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:elevation="4dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/shape_round"
+                app:layout_constraintTop_toTopOf="@id/photo"
+                app:layout_constraintBottom_toBottomOf="@id/photo"
+                app:layout_constraintStart_toStartOf="@id/photo"
+                app:layout_constraintEnd_toEndOf="@id/photo"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/photo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/img_morning"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/photo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Nino Fachrurozy"/>
+
+            <ImageView
+                android:id="@+id/icTelp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_phone_24"
+                android:tint="@color/colorAccent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintTop_toBottomOf="@id/nama"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/telp"/>
+
+            <TextView
+                android:id="@+id/telp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/nama"
+                app:layout_constraintBottom_toBottomOf="@id/icTelp"
+                app:layout_constraintStart_toEndOf="@id/icTelp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="0896317429"/>
+
+            <ImageView
+                android:id="@+id/icEmail"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_mail_24"
+                android:tint="@color/colorAccent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintTop_toBottomOf="@id/icTelp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/email"/>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/icTelp"
+                app:layout_constraintBottom_toBottomOf="@id/icEmail"
+                app:layout_constraintStart_toEndOf="@id/icEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="nfach98@gmail.com"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_acc_menu"
+            app:layout_constraintTop_toBottomOf="@id/bgInfo">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_person_24"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                style="@style/ETATextView.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:text="@string/profile"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/security"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_acc_menu"
+            app:layout_constraintTop_toBottomOf="@id/profile">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_lock_24"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                style="@style/ETATextView.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:text="@string/security"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_acc_menu"
+            app:layout_constraintTop_toBottomOf="@id/security">
+
+            <TextView
+                style="@style/ETATextView.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="@string/logout"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_acc_menu"
+            app:layout_constraintTop_toBottomOf="@id/logout">
+
+            <TextView
+                style="@style/ETATextView.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="16sp"
+                android:text="@string/delete_acc"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
