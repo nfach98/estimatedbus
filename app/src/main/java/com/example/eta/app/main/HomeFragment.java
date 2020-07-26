@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.eta.R;
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment {
 
     private ConstraintLayout layoutInfo;
     private TextView tvLat, tvLng, tvPos, tvSpeed, tvEta, tvMessage;
+    private ProgressBar progressBar;
 
     private ApiService apiService;
 
@@ -48,7 +50,7 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ViewRefreshHandler viewRefreshHandler = new ViewRefreshHandler();
         apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
-        viewRefreshHandler.executePerSecond(new FetchBusRunnable(null, layoutInfo, tvLat, tvLng, tvPos, tvSpeed, tvEta, tvMessage));
+        viewRefreshHandler.executePerSecond(new FetchBusRunnable(null, layoutInfo, tvLat, tvLng, tvPos, tvSpeed, tvEta, tvMessage, progressBar));
     }
 
     private void initView(View view){
@@ -60,6 +62,8 @@ public class HomeFragment extends Fragment {
         tvSpeed = view.findViewById(R.id.speed);
         tvEta = view.findViewById(R.id.eta);
         tvMessage = view.findViewById(R.id.message);
+
+        progressBar = view.findViewById(R.id.progress);
     }
 
     private class FetchBusRunnable extends ViewRefreshHandler.ViewRunnable<View> {
@@ -76,6 +80,7 @@ public class HomeFragment extends Fragment {
                 public void onResponse(@NotNull Call<List<BusInfo>> call, @NotNull Response<List<BusInfo>> response) {
                     if(response.body() != null){
                         BusInfo info = response.body().get(0);
+                        view[7].setVisibility(View.GONE);
                         if(info.getMessage().equals("Bus tidak beroperasi")){
                             view[0].setVisibility(View.GONE);
                         }

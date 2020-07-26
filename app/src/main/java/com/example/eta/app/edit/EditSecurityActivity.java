@@ -82,7 +82,7 @@ public class EditSecurityActivity extends AppCompatActivity {
         keluar.setOnClickListener(view13 -> finish());
 
         etEmail = findViewById(R.id.etEmailEdit);
-        etPassword = findViewById(R.id.etTelpEdit);
+        etPassword = findViewById(R.id.etPasswordEdit);
         etConPassword = findViewById(R.id.etConPasswordEdit);
 
         etEmail.setText(UserPref.getField(this, "email"));
@@ -101,6 +101,26 @@ public class EditSecurityActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(!(editable.toString().equals(UserPref.getField(EditSecurityActivity.this, "email")))){
+                    enableButton(true);
+                }
+                else enableButton(false);
+            }
+        });
+
+        etPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(!(editable.toString().equals(""))){
                     enableButton(true);
                 }
                 else enableButton(false);
