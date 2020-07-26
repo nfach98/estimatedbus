@@ -24,12 +24,13 @@
     <string name="bus_status">Status Bus</string>
     <string name="save">Simpan</string>
     <string name="popup_logout">Yakin ingin keluar dari akun?</string>
-    <string name="popup_delete">Yakin ingin menghapus akun? Aksi ini tidak dapat dibatalkan</string>
+    <string name="popup_delete">Yakin ingin menghapus akun?\nAksi ini tidak dapat dibatalkan</string>
     <string name="cancel">Batal</string>
     <string name="welcome">Selamat Datang</string>
     <string name="to_etabus">di ETA Bus</string>
-
     <string name="map_token">pk.eyJ1IjoiZXRhYnVzNzMiLCJhIjoiY2tidXZzeTUyMDA0ZTJ6bnhpcW1najNnMCJ9.x7gSc4MjqDOXsLXhuV4J8g</string>
     <string name="start_drive">Mulai mengemudi</string>
     <string name="con_password">Konfirmasi password</string>
+    <string name="change_unsaved">Terdapat perubahan belum disimpan.\nYakin ingin keluar?</string>
+    <string name="saved_change">Perubahan Anda telah disimpan</string>
 </resources>

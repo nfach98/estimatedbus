@@ -1,26 +1,29 @@
 package com.example.eta.app.edit;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eta.R;
 import com.example.eta.api.ApiClient;
 import com.example.eta.api.ApiService;
-import com.example.eta.api.model.User;
 import com.example.eta.util.UserPref;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +42,7 @@ public class EditProfileActivity extends AppCompatActivity {
     Button btnSubmit;
     EditText etNama, etTelp;
     LinearLayout changePhoto;
+    Dialog dialog;
 
     String userPhoto;
     boolean changed = false;
@@ -53,9 +57,16 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == android.R.id.home){
-            finish();
+            if(!changed) finish();
+            else dialog.show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(!changed) super.onBackPressed();
+        else dialog.show();
     }
 
     @Override
@@ -75,6 +86,20 @@ public class EditProfileActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setTitle(getString(R.string.profile));
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.layout_window);
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+
+        TextView message = dialog.findViewById(R.id.tvMessage);
+        message.setText(R.string.change_unsaved);
+
+        TextView batal = dialog.findViewById(R.id.tvNo);
+        batal.setOnClickListener(view2 -> dialog.dismiss());
+
+        Button keluar = dialog.findViewById(R.id.btnYes);
+        keluar.setText(getString(R.string.logout));
+        keluar.setOnClickListener(view13 -> finish());
 
         etNama = findViewById(R.id.etNamaEdit);
         etNama.setText(UserPref.getField(this, "nama"));
@@ -142,7 +167,13 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onResponse(@NotNull Call<Integer> call, @NotNull Response<Integer> response) {
                 if(response.body() != null){
                     if(response.body() == 0) Timber.d("Gagal");
-                    else if(response.body() == 1) finish();
+                    else if(response.body() == 1){
+                        Context ctx = EditProfileActivity.this;
+                        UserPref.updateField(ctx , "nama", nama);
+                        UserPref.updateField(ctx, "no_telp", telp);
+                        UserPref.updateField(ctx, "photo", photo);
+                        finish();
+                    }
                 }
             }
 
