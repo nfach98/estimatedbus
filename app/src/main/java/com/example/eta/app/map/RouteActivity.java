@@ -130,8 +130,10 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
         call.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(@NotNull Call<Integer> call, @NotNull Response<Integer> response) {
-                if(Objects.requireNonNull(response.body()) != 1) {
-                    Timber.d("Gak iso");
+                if(response.body() != null) {
+                    if(response.body() != 1) {
+                        Timber.d("Gak iso");
+                    }
                 }
             }
 
@@ -176,7 +178,7 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
                 .navigationListener(this)
                 .progressChangeListener(this)
                 .routeListener(this)
-                .shouldSimulateRoute(false);
+                .shouldSimulateRoute(true);
         return options.build();
     }
 
