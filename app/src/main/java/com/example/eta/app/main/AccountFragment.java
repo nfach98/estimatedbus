@@ -104,6 +104,12 @@ public class AccountFragment extends Fragment {
         setUserData();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setUserData();
+    }
+
     private void setUserData(){
         Context context = getActivity();
 
