@@ -14,6 +14,8 @@ import com.example.eta.R;
 import com.example.eta.api.ApiClient;
 import com.example.eta.api.ApiService;
 import com.example.eta.util.UserPref;
+import com.example.eta.view.ProgressButton;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 
@@ -33,9 +35,10 @@ import timber.log.Timber;
 
 public class EditSecurityActivity extends AppCompatActivity {
 
-    Button btnSubmit;
-    EditText etEmail, etPassword, etConPassword;
-    Dialog dialog;
+    private ProgressButton btnSubmit;
+    private EditText etEmail, etPassword, etConPassword;
+    private TextInputLayout ilConPassword;
+    private Dialog dialog;
 
     boolean changed = false;
 
@@ -84,6 +87,8 @@ public class EditSecurityActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmailEdit);
         etPassword = findViewById(R.id.etPasswordEdit);
         etConPassword = findViewById(R.id.etConPasswordEdit);
+        ilConPassword = findViewById(R.id.conPassword);
+        btnSubmit = findViewById(R.id.btnSubmit);
 
         etEmail.setText(UserPref.getField(this, "email"));
 
@@ -141,14 +146,19 @@ public class EditSecurityActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(!(editable.toString().equals(etPassword.getText().toString()))){
-                    etConPassword.setError("Password tidak sama");
+                    ilConPassword.setError("Password tidak sama");
                 }
-                else etConPassword.setError(null);
+                else {
+                    ilConPassword.setError(null);
+                    ilConPassword.setErrorEnabled(false);
+                }
             }
         });
 
-        btnSubmit = findViewById(R.id.btnSubmit);
-        btnSubmit.setOnClickListener(view -> update(etEmail.getText().toString(), hash256(etPassword.getText().toString())));
+        btnSubmit.setOnClickListener(view -> {
+            btnSubmit.setLoading(true);
+            update(etEmail.getText().toString(), hash256(etPassword.getText().toString()));
+        });
     }
 
     private void update(String email, String password){

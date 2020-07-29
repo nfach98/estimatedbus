@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
@@ -17,6 +16,7 @@ import com.example.eta.api.ApiClient;
 import com.example.eta.api.ApiService;
 import com.example.eta.api.model.User;
 import com.example.eta.app.main.MainActivity;
+import com.example.eta.view.ProgressButton;
 import com.example.eta.util.UserPref;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
@@ -37,7 +37,7 @@ import timber.log.Timber;
 
 public class MasukActivity extends AppCompatActivity {
 
-    Button btnMasuk;
+    ProgressButton btnMasuk;
     TextView tvRegister;
     ImageSwitcher wallpaper;
 
@@ -62,7 +62,11 @@ public class MasukActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
 
-        btnMasuk.setOnClickListener(view -> login(etUsername.getText().toString(), hash256(etPassword.getText().toString())));
+        btnMasuk.setText(getString(R.string.login));
+        btnMasuk.setOnClickListener(view ->{
+            btnMasuk.setLoading(true);
+            login(etUsername.getText().toString(), hash256(etPassword.getText().toString()));
+        });
 
         tvRegister.setOnClickListener(view -> startActivity(new Intent(MasukActivity.this, DaftarActivity.class)));
 
@@ -147,5 +151,4 @@ public class MasukActivity extends AppCompatActivity {
             }
         });
     }
-
 }

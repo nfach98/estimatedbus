@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +20,7 @@ import com.example.eta.api.model.BusInfo;
 import com.example.eta.api.model.Halte;
 import com.example.eta.util.JSONToList;
 import com.example.eta.util.UserPref;
+import com.example.eta.util.ViewRefreshHandler;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -102,12 +102,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
         apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
         initView(savedInstanceState);
+        ViewRefreshHandler viewRefreshHandler = new ViewRefreshHandler();
+        viewRefreshHandler.executePerSecond(new FetchBusRunnable(null));
     }
 
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
-        fetchBusLocation();
-
         listFeature = new ArrayList<>();
         ArrayList<Halte> list = new JSONToList(this, "halte").getListHalte();
         for(Halte halte: list) {
@@ -209,41 +209,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
-    private void fetchBusLocation(){
-        Call<List<BusInfo>> call = apiService.getBusInfo();
-        call.enqueue(new Callback<List<BusInfo>>() {
-            @Override
-            public void onResponse(@NotNull Call<List<BusInfo>> call, @NotNull Response<List<BusInfo>> response) {
-                if(response.body() != null){
-                    BusInfo info = response.body().get(0);
-                    LatLng point = new LatLng(info.getLat(), info.getLng());
-
-                    if (animator != null && animator.isStarted()) {
-                        busPoint = (LatLng) animator.getAnimatedValue();
-                        animator.cancel();
-                    }
-
-                    animator = ObjectAnimator.ofObject(latLngEvaluator, busPoint, point).setDuration(1000);
-                    animator.addUpdateListener(animatorUpdateListener);
-                    animator.start();
-                    busPoint = point;
-                }
-            }
-
-            @Override
-            public void onFailure(@NotNull Call<List<BusInfo>> call, @NotNull Throwable t) {
-
-            }
-        });
-
-        refresh();
-    }
-
-    private void refresh(){
-        final Handler handler = new Handler();
-        handler.postDelayed(this::fetchBusLocation, 1000);
-    }
-
     private final ValueAnimator.AnimatorUpdateListener animatorUpdateListener = valueAnimator -> {
         LatLng animatedPosition = (LatLng) valueAnimator.getAnimatedValue();
 
@@ -294,6 +259,42 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Toast.makeText(activity, exception.getLocalizedMessage(),
                         Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    private class FetchBusRunnable extends ViewRefreshHandler.ViewRunnable<View> {
+
+        public FetchBusRunnable(@Nullable Bundle args, View ...view) {
+            super(args, view);
+        }
+
+        @Override
+        protected void run(View[] view, Bundle args) {
+            Call<List<BusInfo>> call = apiService.getBusInfo();
+            call.enqueue(new Callback<List<BusInfo>>() {
+                @Override
+                public void onResponse(@NotNull Call<List<BusInfo>> call, @NotNull Response<List<BusInfo>> response) {
+                    if(response.body() != null){
+                        BusInfo info = response.body().get(0);
+                        LatLng point = new LatLng(info.getLat(), info.getLng());
+
+                        if (animator != null && animator.isStarted()) {
+                            busPoint = (LatLng) animator.getAnimatedValue();
+                            animator.cancel();
+                        }
+
+                        animator = ObjectAnimator.ofObject(latLngEvaluator, busPoint, point).setDuration(1000);
+                        animator.addUpdateListener(animatorUpdateListener);
+                        animator.start();
+                        busPoint = point;
+                    }
+                }
+
+                @Override
+                public void onFailure(@NotNull Call<List<BusInfo>> call, @NotNull Throwable t) {
+
+                }
+            });
         }
     }
 

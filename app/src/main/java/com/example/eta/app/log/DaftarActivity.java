@@ -101,6 +101,7 @@ public class DaftarActivity extends AppCompatActivity {
                 }
                 else{
                     ilEmail.setError(null);
+                    ilEmail.setErrorEnabled(false);
                 }
             }
 

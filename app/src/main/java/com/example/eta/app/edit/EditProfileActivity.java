@@ -14,12 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.eta.R;
 import com.example.eta.api.ApiClient;
 import com.example.eta.api.ApiService;
 import com.example.eta.util.UserPref;
+import com.example.eta.view.ProgressButton;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +39,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private static final int READ_REQUEST_CODE = 42;
 
-    Button btnSubmit;
+    ProgressButton btnSubmit;
     EditText etNama, etTelp;
     LinearLayout changePhoto;
     Dialog dialog;
@@ -154,7 +154,10 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
         btnSubmit = findViewById(R.id.btnSubmit);
-        btnSubmit.setOnClickListener(view -> update(etNama.getText().toString(), etTelp.getText().toString(), userPhoto));
+        btnSubmit.setOnClickListener(view ->{
+            btnSubmit.setLoading(true);
+            update(etNama.getText().toString(), etTelp.getText().toString(), userPhoto);
+        });
     }
 
     private void update(String nama, String telp, String photo){
