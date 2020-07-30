@@ -47,6 +47,8 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
     private List<Halte> haltes = new ArrayList<>();
     private int curHalte = 0;
 
+    private boolean arrive = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +111,9 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
 
     @Override
     public void onArrival() {
-        if (!points.isEmpty()) {
+        if (!points.isEmpty() && !arrive) {
+            arrive = true;
+            Log.d("halte", String.valueOf(arrive));
             fetchRoute(getLastKnownLocation(), points.remove(0));
             curHalte++;
             Toast.makeText(this, haltes.get(curHalte).getNama(), Toast.LENGTH_SHORT).show();
@@ -118,8 +122,9 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
 
     @Override
     public void onProgressChange(Location location, RouteProgress routeProgress) {
+        arrive = false;
+        Log.d("halte", String.valueOf(arrive));
         lastKnownLocation = location;
-        Log.d("index", String.valueOf(curHalte));
         Call<Integer> call = service.updateBusInfo(
                 location.getLatitude(), location.getLongitude(),
                 routeProgress.currentLegProgress().currentStep().name(),

@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,8 +32,10 @@ public class HomeFragment extends Fragment {
     private ConstraintLayout layoutInfo;
     private TextView tvLat, tvLng, tvPos, tvSpeed, tvEta, tvMessage;
     private ProgressBar progressBar;
+    private SwipeRefreshLayout swipe;
 
     private ApiService apiService;
+    private ViewRefreshHandler viewRefreshHandler;
 
     public HomeFragment() {
 
@@ -48,13 +51,14 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ViewRefreshHandler viewRefreshHandler = new ViewRefreshHandler();
+        viewRefreshHandler = new ViewRefreshHandler();
         apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
-        viewRefreshHandler.executePerSecond(new FetchBusRunnable(null, layoutInfo, tvLat, tvLng, tvPos, tvSpeed, tvEta, tvMessage, progressBar));
+        viewRefreshHandler.executePerSecond(new FetchBusRunnable(null, layoutInfo, tvLat, tvLng, tvPos, tvSpeed, tvEta, tvMessage, progressBar, swipe));
     }
 
     private void initView(View view){
         layoutInfo = view.findViewById(R.id.infoActive);
+        swipe = view.findViewById(R.id.refresh);
 
         tvLat = view.findViewById(R.id.lat);
         tvLng = view.findViewById(R.id.lng);
@@ -64,6 +68,12 @@ public class HomeFragment extends Fragment {
         tvMessage = view.findViewById(R.id.message);
 
         progressBar = view.findViewById(R.id.progress);
+
+        swipe.setColorSchemeResources(R.color.colorAccent, R.color.colorAccent, R.color.colorAccent);
+        swipe.setOnRefreshListener(() -> {
+            viewRefreshHandler.cancelAll();
+            viewRefreshHandler.executePerSecond(new FetchBusRunnable(null, layoutInfo, tvLat, tvLng, tvPos, tvSpeed, tvEta, tvMessage, progressBar, swipe));
+        });
     }
 
     private class FetchBusRunnable extends ViewRefreshHandler.ViewRunnable<View> {
@@ -93,6 +103,7 @@ public class HomeFragment extends Fragment {
                             ((TextView) view[5]).setText(new TimeConverter(info.getTime()).getConverted());
                         }
 
+                        ((SwipeRefreshLayout) view[8]).setRefreshing(false);
                         ((TextView) view[6]).setText(info.getMessage());
                     }
                 }
