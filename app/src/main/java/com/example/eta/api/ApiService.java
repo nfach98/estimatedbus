@@ -32,8 +32,8 @@ public interface ApiService {
 
     @GET("/updatebus")
     Call<Integer> updateBusInfo(@Query("lat") double lat, @Query("lng") double lng,
-                                @Query("pos") String pos, @Query("speed") float speed,
-                                @Query("time") float time, @Query("message") String message);
+                                @Query("pos") String pos, @Query("speed") String speed,
+                                @Query("time") String time, @Query("message") String message);
 
     @GET("/bus")
     Call<List<BusInfo>> getBusInfo();

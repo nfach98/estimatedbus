@@ -13,15 +13,15 @@ public class BusInfo {
     private String pos;
 
     @SerializedName("speed")
-    private float speed;
+    private String speed;
 
     @SerializedName("time")
-    private float time;
+    private String time;
 
     @SerializedName("message")
     private String message;
 
-    public BusInfo(double lat, double lng, String pos, float speed, float time, String message) {
+    public BusInfo(double lat, double lng, String pos, String speed, String time, String message) {
         this.lat = lat;
         this.lng = lng;
         this.pos = pos;
@@ -42,11 +42,11 @@ public class BusInfo {
         return pos;
     }
 
-    public float getSpeed() {
+    public String getSpeed() {
         return speed;
     }
 
-    public float getTime() {
+    public String getTime() {
         return time;
     }
 

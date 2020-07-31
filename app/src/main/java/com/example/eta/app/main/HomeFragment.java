@@ -11,7 +11,6 @@ import com.example.eta.R;
 import com.example.eta.api.ApiClient;
 import com.example.eta.api.ApiService;
 import com.example.eta.api.model.BusInfo;
-import com.example.eta.util.TimeConverter;
 import com.example.eta.util.ViewRefreshHandler;
 
 import org.jetbrains.annotations.NotNull;
@@ -99,8 +98,8 @@ public class HomeFragment extends Fragment {
                             ((TextView) view[1]).setText(String.valueOf(info.getLat()));
                             ((TextView) view[2]).setText(String.valueOf(info.getLng()));
                             ((TextView) view[3]).setText(info.getPos());
-                            ((TextView) view[4]).setText(String.format("%s km/jam", info.getSpeed()));
-                            ((TextView) view[5]).setText(new TimeConverter(info.getTime()).getConverted());
+                            ((TextView) view[4]).setText(info.getSpeed());
+                            ((TextView) view[5]).setText(info.getTime());
                         }
 
                         ((SwipeRefreshLayout) view[8]).setRefreshing(false);

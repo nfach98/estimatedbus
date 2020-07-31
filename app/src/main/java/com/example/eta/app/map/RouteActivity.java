@@ -10,6 +10,7 @@ import com.example.eta.api.ApiClient;
 import com.example.eta.api.ApiService;
 import com.example.eta.api.model.Halte;
 import com.example.eta.util.JSONToList;
+import com.example.eta.util.TimeConverter;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
 import com.mapbox.geojson.Point;
@@ -128,8 +129,8 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
         Call<Integer> call = service.updateBusInfo(
                 location.getLatitude(), location.getLongitude(),
                 routeProgress.currentLegProgress().currentStep().name(),
-                (float) (location.getSpeed() * 3.6),
-                (float) routeProgress.currentLegProgress().durationRemaining(),
+                (int) (location.getSpeed() * 3.6) + " km/jam",
+                new TimeConverter(routeProgress.currentLegProgress().durationRemaining()).getConverted(),
                 "Bus menuju");
 
         call.enqueue(new Callback<Integer>() {
@@ -245,8 +246,8 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
         Call<Integer> call = service.updateBusInfo(
                 0, 0,
                 "Bus tidak beroperasi",
-                0,
-                0,
+                "00 km/jam",
+                "00 detik",
                 "Bus tidak beroperasi");
 
         call.enqueue(new Callback<Integer>() {
