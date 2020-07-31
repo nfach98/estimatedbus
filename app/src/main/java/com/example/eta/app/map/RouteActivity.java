@@ -10,7 +10,6 @@ import com.example.eta.api.ApiClient;
 import com.example.eta.api.ApiService;
 import com.example.eta.api.model.Halte;
 import com.example.eta.util.JSONToList;
-import com.example.eta.util.TimeConverter;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
 import com.mapbox.geojson.Point;
@@ -129,8 +128,8 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
         Call<Integer> call = service.updateBusInfo(
                 location.getLatitude(), location.getLongitude(),
                 routeProgress.currentLegProgress().currentStep().name(),
-                (int) (location.getSpeed() * 3.6) + " km/jam",
-                new TimeConverter(routeProgress.currentLegProgress().durationRemaining()).getConverted(),
+                convertSpeed((int) (location.getSpeed() * 3.6)),
+                convertTime(routeProgress.currentLegProgress().durationRemaining()),
                 "Bus menuju");
 
         call.enqueue(new Callback<Integer>() {
@@ -190,6 +189,32 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
 
     private Point getLastKnownLocation() {
         return Point.fromLngLat(lastKnownLocation.getLongitude(), lastKnownLocation.getLatitude());
+    }
+
+    private String convertSpeed(Integer speed){
+        String result;
+        if(speed < 10) result = "0" + speed;
+        else result = speed.toString();
+        return result + " km/jam";
+    }
+
+    public String convertTime(double time){
+        String conv = "";
+        if(time < 60) {
+            if(time < 10) conv = "0" + (int) time + " detik";
+            else conv = (int) time + " detik";
+        }
+        else if(time < 3600){
+            int min = (int) (time / 60);
+            if(min < 10) conv = "0" + min + " menit";
+            else conv =  min + " menit";
+        }
+        else {
+            int hour = (int) (time / 3600);
+            if(hour < 10) conv = "0" + hour + " jam";
+            else conv = hour  + " jam";
+        }
+        return conv;
     }
 
     @Override
