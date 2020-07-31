@@ -25,8 +25,11 @@ import com.mapbox.services.android.navigation.v5.routeprogress.RouteProgress;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import androidx.annotation.Nullable;
@@ -123,10 +126,11 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
     @Override
     public void onProgressChange(Location location, RouteProgress routeProgress) {
         arrive = false;
+        String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         Log.d("halte", String.valueOf(arrive));
         lastKnownLocation = location;
         Call<Integer> call = service.updateBusInfo(
-                location.getLatitude(), location.getLongitude(),
+                time, location.getLatitude(), location.getLongitude(),
                 routeProgress.currentLegProgress().currentStep().name(),
                 convertSpeed((int) (location.getSpeed() * 3.6)),
                 convertTime(routeProgress.currentLegProgress().durationRemaining()),
@@ -195,19 +199,19 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
         String result;
         if(speed < 10) result = "0" + speed;
         else result = speed.toString();
-        return result + " km/jam";
+        return result + " km/J";
     }
 
     public String convertTime(double time){
-        String conv = "";
+        String conv;
         if(time < 60) {
-            if(time < 10) conv = "0" + (int) time + " detik";
-            else conv = (int) time + " detik";
+            if(time < 10) conv = "0" + (int) time + " dtk";
+            else conv = (int) time + " dtk";
         }
         else if(time < 3600){
             int min = (int) (time / 60);
-            if(min < 10) conv = "0" + min + " menit";
-            else conv =  min + " menit";
+            if(min < 10) conv = "0" + min + " mnt";
+            else conv =  min + " mnt";
         }
         else {
             int hour = (int) (time / 3600);
@@ -269,10 +273,10 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
     @Override
     protected void onDestroy() {
         Call<Integer> call = service.updateBusInfo(
-                0, 0,
+                "00:00", 0, 0,
                 "Bus tidak beroperasi",
-                "00 km/jam",
-                "00 detik",
+                "00 km/J",
+                "00 dtk",
                 "Bus tidak beroperasi");
 
         call.enqueue(new Callback<Integer>() {

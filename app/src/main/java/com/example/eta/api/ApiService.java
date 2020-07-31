@@ -31,7 +31,7 @@ public interface ApiService {
     Call<Integer> userDelete(@Query("email") String email);
 
     @GET("/updatebus")
-    Call<Integer> updateBusInfo(@Query("lat") double lat, @Query("lng") double lng,
+    Call<Integer> updateBusInfo(@Query("now") String now, @Query("lat") double lat, @Query("lng") double lng,
                                 @Query("pos") String pos, @Query("speed") String speed,
                                 @Query("time") String time, @Query("message") String message);
 
