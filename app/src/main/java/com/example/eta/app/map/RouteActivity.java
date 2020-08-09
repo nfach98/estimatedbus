@@ -2,8 +2,10 @@ package com.example.eta.app.map;
 
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eta.R;
 import com.example.eta.api.ApiClient;
@@ -32,8 +34,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,7 +50,7 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
     private List<Halte> haltes = new ArrayList<>();
     private int curHalte = 0;
 
-    private boolean arrive = false;
+    private float curSpeed = 0f;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -114,9 +114,7 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
 
     @Override
     public void onArrival() {
-        if (!points.isEmpty() && !arrive) {
-            arrive = true;
-            Log.d("halte", String.valueOf(arrive));
+        if (!points.isEmpty() && curSpeed == 0f) {
             fetchRoute(getLastKnownLocation(), points.remove(0));
             curHalte++;
             Toast.makeText(this, haltes.get(curHalte).getNama(), Toast.LENGTH_SHORT).show();
@@ -125,9 +123,8 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
 
     @Override
     public void onProgressChange(Location location, RouteProgress routeProgress) {
-        arrive = false;
+        curSpeed = location.getSpeed();
         String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
-        Log.d("halte", String.valueOf(arrive));
         lastKnownLocation = location;
         Call<Integer> call = service.updateBusInfo(
                 time, location.getLatitude(), location.getLongitude(),

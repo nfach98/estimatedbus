@@ -1,67 +1,67 @@
 {
   "haltes": [
     {
-      "name": "Halte its",
+      "name": "Halte ITS",
       "lat": -7.279507,
       "lng": 112.789969
     },
     {
-      "name": "Halte klampis",
+      "name": "Halte Klampis",
       "lat": -7.280698,
       "lng": 112.775415
     },
     {
-      "name": "Halte gramedia",
+      "name": "Halte Gramedia",
       "lat": -7.280097,
       "lng": 112.767059
     },
     {
-      "name": "Halte kertajaya 2",
+      "name": "Halte Kertajaya 2",
       "lat": -7.279052,
       "lng": 112.759613
     },
     {
-      "name": "Halte lapangan hockey",
+      "name": "Halte Lapangan hockey",
       "lat": -7.270414,
       "lng": 112.756348
     },
     {
-      "name": "Halte sman 4",
+      "name": "Halte SMAN 4",
       "lat": -7.265453,
       "lng": 112.755515
     },
     {
-      "name": "Halte pemuda",
+      "name": "Halte Pemuda",
       "lat": -7.265256,
       "lng": 112.747699
     },
     {
-      "name": "Halte pangsud",
+      "name": "Halte Pangsud",
       "lat": -7.266279,
       "lng": 112.745041
     },
     {
-      "name": "Halte sono kembang",
+      "name": "Halte Sono Kembang",
       "lat": -7.269613,
       "lng": 112.743821
     },
     {
-      "name": "Halte urip sumoharjo",
+      "name": "Halte Urip Sumoharjo",
       "lat": -7.274893,
       "lng": 112.741878
     },
     {
-      "name": "Halte santa maria",
+      "name": "Halte Santa Maria",
       "lat": -7.283561,
       "lng": 112.740265
     },
     {
-      "name": "Halte bengawan 2",
+      "name": "Halte Bengawan 2",
       "lat": -7.289811,
       "lng": 112.738043
     },
     {
-      "name": "Halte kutai 2",
+      "name": "Halte Kutai 2",
       "lat": -7.291242,
       "lng": 112.734619
     },
@@ -71,102 +71,102 @@
       "lng": 112.728892
     },
     {
-      "name": "Halte darmo park 2",
+      "name": "Halte Darmo Park 2",
       "lat": -7.291675,
       "lng": 112.717553
     },
     {
-      "name": "Halte taman makam pahlawan 2",
+      "name": "Halte Taman Makam Pahlawan 2",
       "lat": -7.288826,
       "lng": 112.708408
     },
     {
-      "name": "Halte putat gede 2",
+      "name": "Halte Putat Gede 2",
       "lat": -7.286028,
       "lng": 112.698868
     },
     {
-      "name": "Halte pradah kali kendal",
+      "name": "Halte Pradah Kali Kendal",
       "lat": -7.284370,
       "lng": 112.692115
     },
     {
-      "name": "Halte patung kuda 2",
+      "name": "Halte Patung Kuda 2",
       "lat": -7.282968,
       "lng": 112.686007
     },
     {
-      "name": "Halte jono sewojo 2",
+      "name": "Halte Jono Sewojo 2",
       "lat": -7.283969,
       "lng": 112.682227
     },
     {
-      "name": "Halte graha family",
+      "name": "Halte Graha Family",
       "lat": -7.292628,
       "lng": 112.676036
     },
     {
-      "name": "Halte unesa",
+      "name": "Halte Unesa",
       "lat": -7.298360,
       "lng": 112.675322
     },
     {
-      "name": "Halte ptc",
+      "name": "Halte PTC",
       "lat": -7.288355,
       "lng": 112.677288
     },
     {
-      "name": "Halte jono sewojo 1",
+      "name": "Halte Jono Sewojo 1",
       "lat": -7.284526,
       "lng": 112.681368
     },
     {
-      "name": "Halte patung kuda 1",
+      "name": "Halte Patung Kuda 1",
       "lat": -7.281929,
       "lng": 112.685362
     },
     {
-      "name": "Halte darmo permai",
+      "name": "Halte Darmo Permai",
       "lat": -7.284236,
       "lng": 112.692409
     },
     {
-      "name": "Halte putat gede 1",
+      "name": "Halte Putat Gede 1",
       "lat": -7.285781,
       "lng": 112.698702
     },
     {
-      "name": "Halte taman makam pahlawan 1",
+      "name": "Halte Taman Makam Pahlawan 1",
       "lat": -7.288569,
       "lng": 112.708327
     },
     {
-      "name": "Halte park and ride mayjend sungkono",
+      "name": "Halte Park and Ride Mayjend Sungkono",
       "lat": -7.290889,
       "lng": 112.715323
     },
     {
-      "name": "Halte darmo park 1",
+      "name": "Halte Darmo Park 1",
       "lat": -7.291477,
       "lng": 112.717534
     },
     {
-      "name": "Halte gedung juang",
+      "name": "Halte Gedung Juang",
       "lat": -7.291761,
       "lng": 112.720928
     },
     {
-      "name": "Halte adityawarman",
+      "name": "Halte Adityawarman",
       "lat": -7.292494,
       "lng": 112.729117
     },
     {
-      "name": "Halte kutai 1",
+      "name": "Halte Kutai 1",
       "lat": -7.291173,
       "lng": 112.734521
     },
     {
-      "name": "Halte bengawan 1",
+      "name": "Halte Bengawan 1",
       "lat": -7.289748,
       "lng": 112.738044
     },
@@ -176,87 +176,87 @@
       "lng": 112.739392
     },
     {
-      "name": "Halte darmo niaga",
+      "name": "Halte Darmo Niaga",
       "lat": -7.280196,
       "lng": 112.740630
     },
     {
-      "name": "Halte darmo kf",
+      "name": "Halte Darmo KF",
       "lat": -7.277826,
       "lng": 112.741102
     },
     {
-      "name": "Halte basra",
+      "name": "Halte Basra",
       "lat": -7.271763,
       "lng": 112.741603
     },
     {
-      "name": "Halte basra tp",
+      "name": "Halte Basra TP",
       "lat": -7.264821,
       "lng": 112.740968
     },
     {
-      "name": "Halte embong malang",
+      "name": "Halte Embong Malang",
       "lat": -7.260341,
       "lng": 112.737217
     },
     {
-      "name": "Halte siola",
+      "name": "Halte Siola",
       "lat": -7.257236,
       "lng": 112.737758
     },
     {
-      "name": "Halte tunjungan",
+      "name": "Halte Tunjungan",
       "lat": -7.259890,
       "lng": 112.739238
     },
     {
-      "name": "Halte simpang pemuda",
+      "name": "Halte Simpang Pemuda",
       "lat": -7.262986,
       "lng": 112.741801
     },
     {
-      "name": "Halte gubernur suryo",
+      "name": "Halte Gubernur Suryo",
       "lat": -7.263784,
       "lng": 112.743975
     },
     {
-      "name": "Halte balai kota",
+      "name": "Halte Balai Kota",
       "lat": -7.260989,
       "lng": 112.747840
     },
     {
-      "name": "Halte moestopo",
+      "name": "Halte Moestopo",
       "lat": -7.264444,
       "lng": 112.754100
     },
     {
-      "name": "Halte rsud dr soetomo",
+      "name": "Halte RSUD dr Soetomo",
       "lat": -7.269274,
       "lng": 112.756545
     },
     {
-      "name": "Halte unair",
+      "name": "Halte Unair",
       "lat": -7.273680,
       "lng": 112.756391
     },
     {
-      "name": "Halte kertajaya",
+      "name": "Halte Kertajaya",
       "lat": -7.278730,
       "lng": 112.759442
     },
     {
-      "name": "Halte samsat manyar",
+      "name": "Halte Samsat Manyar",
       "lat": -7.279470,
       "lng": 112.763902
     },
     {
-      "name": "Halte koni",
+      "name": "Halte KONI",
       "lat": -7.280393,
       "lng": 112.776927
     },
     {
-      "name": "Halte kertajaya indah",
+      "name": "Halte Kertajaya Indah",
       "lat": -7.280308,
       "lng": 112.782018
     }
