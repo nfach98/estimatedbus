@@ -2,6 +2,7 @@ package com.example.eta.app.map;
 
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -39,8 +40,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
-public class RouteActivity extends AppCompatActivity implements OnNavigationReadyCallback,
-        NavigationListener, RouteListener, ProgressChangeListener {
+public class RouteActivity extends AppCompatActivity implements OnNavigationReadyCallback, NavigationListener, RouteListener, ProgressChangeListener {
 
     private ApiService service;
     private NavigationView navigationView;
@@ -49,8 +49,6 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
     private List<Point> points = new ArrayList<>();
     private List<Halte> haltes = new ArrayList<>();
     private int curHalte = 0;
-
-    private float curSpeed = 0f;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -114,7 +112,8 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
 
     @Override
     public void onArrival() {
-        if (!points.isEmpty() && curSpeed == 0f) {
+        Log.d("rute", "onArrival");
+        if (!points.isEmpty()) {
             fetchRoute(getLastKnownLocation(), points.remove(0));
             curHalte++;
             Toast.makeText(this, haltes.get(curHalte).getNama(), Toast.LENGTH_SHORT).show();
@@ -123,15 +122,24 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
 
     @Override
     public void onProgressChange(Location location, RouteProgress routeProgress) {
-        curSpeed = location.getSpeed();
+        Log.d("halte", haltes.get(curHalte).getNama());
         String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        String message;
         lastKnownLocation = location;
+
+        if(nearestNeighbor(routeProgress.distanceRemaining() + routeProgress.distanceTraveled(), routeProgress.distanceTraveled())){
+            message = "Bus berangkat dari " + haltes.get(curHalte).getNama();
+        }
+        else{
+            message = "Bus menuju ke " + haltes.get(curHalte + 1).getNama();
+        }
+
         Call<Integer> call = service.updateBusInfo(
                 time, location.getLatitude(), location.getLongitude(),
                 routeProgress.currentLegProgress().currentStep().name(),
                 convertSpeed((int) (location.getSpeed() * 3.6)),
                 convertTime(routeProgress.currentLegProgress().durationRemaining()),
-                "Bus menuju");
+                message);
 
         call.enqueue(new Callback<Integer>() {
             @Override
@@ -216,6 +224,11 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
             else conv = hour  + " jam";
         }
         return conv;
+    }
+
+    public boolean nearestNeighbor(double distance, double current){
+        double k = distance / 2;
+        return current < k;
     }
 
     @Override
