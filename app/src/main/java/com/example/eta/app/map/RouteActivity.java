@@ -113,7 +113,7 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
     @Override
     public void onArrival() {
         Log.d("rute", "onArrival");
-        if (!points.isEmpty()) {
+        if (!points.isEmpty() && curHalte < 1) {
             fetchRoute(getLastKnownLocation(), points.remove(0));
             curHalte++;
             Toast.makeText(this, haltes.get(curHalte).getNama(), Toast.LENGTH_SHORT).show();
