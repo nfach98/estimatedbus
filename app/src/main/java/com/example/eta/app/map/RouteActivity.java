@@ -112,17 +112,15 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
 
     @Override
     public void onArrival() {
-        Log.d("rute", "onArrival");
-        if (!points.isEmpty() && curHalte < 1) {
+        /*if (!points.isEmpty() && curHalte < 1) {
             fetchRoute(getLastKnownLocation(), points.remove(0));
             curHalte++;
             Toast.makeText(this, haltes.get(curHalte).getNama(), Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     @Override
     public void onProgressChange(Location location, RouteProgress routeProgress) {
-        Log.d("halte", haltes.get(curHalte).getNama());
         String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         String message;
         lastKnownLocation = location;
@@ -133,6 +131,8 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
         else{
             message = "Bus menuju ke " + haltes.get(curHalte + 1).getNama();
         }
+
+        if(routeProgress.distanceRemaining() < 3.0) message = "Bus telah tiba di " + haltes.get(curHalte + 1).getNama();
 
         Call<Integer> call = service.updateBusInfo(
                 time, location.getLatitude(), location.getLongitude(),
