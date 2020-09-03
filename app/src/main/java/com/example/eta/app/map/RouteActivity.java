@@ -132,7 +132,9 @@ public class RouteActivity extends AppCompatActivity implements OnNavigationRead
             message = "Bus menuju ke " + haltes.get(curHalte + 1).getNama();
         }
 
-        if(routeProgress.distanceRemaining() < 3.0) message = "Bus telah tiba di " + haltes.get(curHalte + 1).getNama();
+        if(routeProgress.distanceRemaining() < 3.0) {
+            message = "Bus telah tiba di " + haltes.get(curHalte + 1).getNama();
+        }
 
         Call<Integer> call = service.updateBusInfo(
                 time, location.getLatitude(), location.getLongitude(),

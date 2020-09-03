@@ -33,6 +33,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
+/** activity untuk edit data keamanan pengguna
+ *  data berupa email dan password
+ */
+
 public class EditSecurityActivity extends AppCompatActivity {
 
     private ProgressButton btnSubmit;

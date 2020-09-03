@@ -1,5 +1,9 @@
 package com.example.eta.api.model;
 
+/** kelas untuk menampung data halte
+ *  (daftar halte ada pada folder assets/halte.json)
+ */
+
 public class Halte {
     private String nama;
     private double latitude;

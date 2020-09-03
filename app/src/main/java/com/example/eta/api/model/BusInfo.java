@@ -2,6 +2,10 @@ package com.example.eta.api.model;
 
 import com.google.gson.annotations.SerializedName;
 
+/** class untuk menampung data bus dari hasil get API web
+ *
+ */
+
 public class BusInfo {
     @SerializedName("lat")
     private double lat;

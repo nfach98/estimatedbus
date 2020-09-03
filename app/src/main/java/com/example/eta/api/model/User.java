@@ -2,6 +2,10 @@ package com.example.eta.api.model;
 
 import com.google.gson.annotations.SerializedName;
 
+/** kelas untuk menampung data user
+ *  berisi nama, email, password, dll
+ */
+
 public class User {
     @SerializedName("nama")
     private String nama;

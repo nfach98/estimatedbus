@@ -12,6 +12,10 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/** mempersiapkan client untuk request http
+ * (alamat url, converter json to object, dll.)
+ */
+
 public class ApiClient extends Application {
     public static final String BASE_API_URL = "https://api.estimatedbus.xyz/";
     public static Retrofit retrofit;

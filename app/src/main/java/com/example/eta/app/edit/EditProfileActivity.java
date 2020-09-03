@@ -35,6 +35,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
+/** activity untuk edit data profil pengguna
+ *
+ */
+
 public class EditProfileActivity extends AppCompatActivity {
 
     private static final int READ_REQUEST_CODE = 42;

@@ -35,6 +35,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
+/** activity untuk fungsi login pengguna
+ *  terdapat input email pengguna dan kata sandi
+ */
+
 public class MasukActivity extends AppCompatActivity {
 
     ProgressButton btnMasuk;
@@ -54,22 +58,28 @@ public class MasukActivity extends AppCompatActivity {
     }
 
     private void initView(){
+        //menyembunyikan actionbar
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        //inisialisasi variabel untuk setiap view
         btnMasuk = findViewById(R.id.btnMasuk);
         tvRegister = findViewById(R.id.tvRegister);
         wallpaper = findViewById(R.id.wallpaper);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
 
+        //mengganti teks tombol masuk menjadi masuk
         btnMasuk.setText(getString(R.string.login));
+        //set tombol masuk untuk mengeksekusi fungsi login dan animasi loading ketika ditekan
         btnMasuk.setOnClickListener(view ->{
             btnMasuk.setLoading(true);
             login(etUsername.getText().toString(), hash256(etPassword.getText().toString()));
         });
 
+        //set teks daftar untuk memunculkan activity daftar loading ketika ditekan
         tvRegister.setOnClickListener(view -> startActivity(new Intent(MasukActivity.this, DaftarActivity.class)));
 
+        // mengatur wallpaper berganti otomatis dan animasinya
         wallpaper.setInAnimation( AnimationUtils.loadAnimation(this, R.anim.fade_in));
         wallpaper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
 

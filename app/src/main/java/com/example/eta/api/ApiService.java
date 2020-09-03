@@ -11,6 +11,10 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+/** kelas berisi layanan-layanan yang bisa digunakan
+ *  untuk mengases API
+ */
+
 public interface ApiService {
     @GET("/login")
     Call<List<User>> userLogin(@Query("email") String email, @Query("password") String password);

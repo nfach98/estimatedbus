@@ -12,6 +12,10 @@ import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/** activity untuk menampilkan splash screen
+ *  muncul paling awal ketika membuka aplikasi
+ */
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override

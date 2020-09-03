@@ -30,6 +30,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/** activity untuk fungsi daftar / membuat akun baru
+ *  terdapat inputan untuk data-data pengguna
+ */
+
 public class DaftarActivity extends AppCompatActivity {
 
     private EditText etNama, etNoTelp, etEmail, etPassword;
@@ -52,11 +56,14 @@ public class DaftarActivity extends AppCompatActivity {
     }
 
     private void initView(){
+        //inisialisasi untuk mengatur actionbar
+        //mengubah title dan memunculkan tombol kembali
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setTitle(getString(R.string.register));
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //inisialisasi variabel untuk setiap view
         etNama = findViewById(R.id.etNamaDaftar);
         etNoTelp = findViewById(R.id.etTelpDaftar);
         etEmail = findViewById(R.id.etEmailDaftar);
@@ -64,6 +71,7 @@ public class DaftarActivity extends AppCompatActivity {
         ilEmail = findViewById(R.id.email);
         btnDaftar = findViewById(R.id.btnDaftar);
 
+        //listener untuk mendeteksi perubahan pada field email
         etEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -81,6 +89,7 @@ public class DaftarActivity extends AppCompatActivity {
             }
         });
 
+        //set tombol daftar mengeksekusi fungsi register jika ditekan
         btnDaftar.setOnClickListener(view ->
                 register(getString(etNama), getString(etNoTelp), getString(etEmail), hash256(getString(etPassword))));
     }
@@ -89,6 +98,7 @@ public class DaftarActivity extends AppCompatActivity {
         return editText.getText().toString();
     }
 
+    //fungsi untuk memeriksa apakah email sudah digunakan
     private void checkEmail(String email){
         ApiService service = ApiClient.getRetrofitInstance().create(ApiService.class);
         Call<Integer> call = service.checkEmail(email);
@@ -112,6 +122,7 @@ public class DaftarActivity extends AppCompatActivity {
         });
     }
 
+    //fungsi untuk mendaftarkan data pengguna melalui API
     private void register(String nama, String noTelp, String email, String password){
         ApiService service = ApiClient.getRetrofitInstance().create(ApiService.class);
         Call<List<User>> call = service.userRegister(nama, noTelp, email, password);
@@ -134,6 +145,7 @@ public class DaftarActivity extends AppCompatActivity {
         });
     }
 
+    //fungsi untuk mengenkripsi password sehinnga menjadi hash
     private String hash256(String password) {
         HashCode hexString = Hashing.sha256().hashString(password, StandardCharsets.UTF_8);
         return hexString.toString();
